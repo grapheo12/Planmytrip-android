@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     Button loginBtn;
     EditText email, password;
     EditText backend;
-    private final String loginRoute = "auth/login";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,28 +59,34 @@ public class MainActivity extends AppCompatActivity {
         JSONObject req = new JSONObject();
         req.put("email", user_email);
         req.put("password", user_pwd);
-        String loginUrl = GlobalCtx.urlPrefix + loginRoute;
-        JsonObjectRequest loginRequest = new JsonObjectRequest(Request.Method.POST, loginUrl,
-                req, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Toast.makeText(getApplicationContext(),
-                        "Login Successful",
-                        Toast.LENGTH_SHORT).show();
+        String loginRoute = "auth/login";
 
-                Intent mainPage = new Intent(MainActivity.this, Landing.class);
-                MainActivity.this.startActivity(mainPage);
-                MainActivity.this.finish();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),
-                        "Wrong Credentials",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
+        Intent mainPage = new Intent(MainActivity.this, Landing.class);
+        MainActivity.this.startActivity(mainPage);
+        MainActivity.this.finish();
 
-        GlobalCtx.queue.add(loginRequest);
+//        String loginUrl = GlobalCtx.urlPrefix + loginRoute;
+//        JsonObjectRequest loginRequest = new JsonObjectRequest(Request.Method.POST, loginUrl,
+//                req, new Response.Listener<JSONObject>() {
+//            @Override
+//            public void onResponse(JSONObject response) {
+//                Toast.makeText(getApplicationContext(),
+//                        "Login Successful",
+//                        Toast.LENGTH_SHORT).show();
+//
+//                Intent mainPage = new Intent(MainActivity.this, Landing.class);
+//                MainActivity.this.startActivity(mainPage);
+//                MainActivity.this.finish();
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(getApplicationContext(),
+//                        "Wrong Credentials",
+//                        Toast.LENGTH_LONG).show();
+//            }
+//        });
+//
+//        GlobalCtx.queue.add(loginRequest);
     }
 }
