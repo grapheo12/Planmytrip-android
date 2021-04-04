@@ -35,7 +35,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button loginBtn;
+    Button loginBtn, registerBtn;
     EditText email, password;
     EditText backend;
 
@@ -44,17 +44,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         loginBtn = (Button)findViewById(R.id.btnLogin);
+        registerBtn = (Button)findViewById(R.id.btnRegister);
         email = (EditText)findViewById(R.id.editEmail);
         password = (EditText)findViewById(R.id.editPwd);
         backend = (EditText)findViewById(R.id.backend);
+
+        GlobalCtx.init(this, backend.getText().toString());
+        GlobalCtx.queue.start();
     }
 
     public void doLogin(View view) throws JSONException {
         String user_email = email.getText().toString();
         String user_pwd = password.getText().toString();
-
-        GlobalCtx.init(this, backend.getText().toString());
-        GlobalCtx.queue.start();
 
         JSONObject req = new JSONObject();
         req.put("email", user_email);
@@ -65,28 +66,35 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.startActivity(mainPage);
         MainActivity.this.finish();
 
-//        String loginUrl = GlobalCtx.urlPrefix + loginRoute;
-//        JsonObjectRequest loginRequest = new JsonObjectRequest(Request.Method.POST, loginUrl,
-//                req, new Response.Listener<JSONObject>() {
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                Toast.makeText(getApplicationContext(),
-//                        "Login Successful",
-//                        Toast.LENGTH_SHORT).show();
-//
-//                Intent mainPage = new Intent(MainActivity.this, Landing.class);
-//                MainActivity.this.startActivity(mainPage);
-//                MainActivity.this.finish();
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(getApplicationContext(),
-//                        "Wrong Credentials",
-//                        Toast.LENGTH_LONG).show();
-//            }
-//        });
-//
-//        GlobalCtx.queue.add(loginRequest);
+        String loginUrl = GlobalCtx.urlPrefix + loginRoute;
+        JsonObjectRequest loginRequest = new JsonObjectRequest(Request.Method.POST, loginUrl,
+                req, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText(getApplicationContext(),
+                        "Login Successful",
+                        Toast.LENGTH_SHORT).show();
+
+                Intent mainPage = new Intent(MainActivity.this, Landing.class);
+                MainActivity.this.startActivity(mainPage);
+                MainActivity.this.finish();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),
+                        "Wrong Credentials",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+
+        GlobalCtx.queue.add(loginRequest);
     }
+
+    public void moveToRegister(View view){
+        Intent regPage = new Intent(MainActivity.this, Registration.class);
+        MainActivity.this.startActivity(regPage);
+        MainActivity.this.finish();
+    }
+
 }
