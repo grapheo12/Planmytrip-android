@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     Button loginBtn;
     EditText email, password;
     EditText backend;
-    private final String loginRoute = "auth/login";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         JSONObject req = new JSONObject();
         req.put("email", user_email);
         req.put("password", user_pwd);
+        String loginRoute = "auth/login";
         String loginUrl = GlobalCtx.urlPrefix + loginRoute;
         JsonObjectRequest loginRequest = new JsonObjectRequest(Request.Method.POST, loginUrl,
                 req, new Response.Listener<JSONObject>() {
