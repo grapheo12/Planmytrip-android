@@ -1,4 +1,4 @@
-package com.example.planmytrip.ui.gallery;
+package com.example.planmytrip.ui.hotel;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,24 +14,23 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.planmytrip.R;
 
-public class GalleryFragment extends Fragment {
+public class HotelFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private HotelViewModel hotelViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-//        galleryViewModel =
-//                new ViewModelProvider(this).get(GalleryViewModel.class);
-//        View root = inflater.inflate(R.layout.fragment_hotel.xml, container, false);
+        hotelViewModel =
+                new ViewModelProvider(this).get(HotelViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_hotel, container, false);
 //        final TextView textView = root.findViewById(R.id.text_gallery);
-//        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
+        hotelViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
 //                textView.setText(s);
-//            }
-//        });
+            }
+        });
 
-//        return root;
-        return null;
+        return root;
     }
 }

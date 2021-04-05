@@ -13,6 +13,7 @@
 
     <fragment
         android:id="@+id/nav_hotel"
+        android:name="com.example.planmytrip.ui.hotel.HotelFragment"
         android:label="@string/menu_hotel"
         tools:layout="@layout/fragment_hotel" />
 

@@ -10,6 +10,7 @@
             android:title="Account" />
         <item
             android:id="@+id/nav_hotel"
+            android:icon="@drawable/ic_menu_slideshow"
             android:title="Hotel" />
 
     </group>
