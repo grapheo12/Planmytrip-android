@@ -11,9 +11,9 @@ import java.net.CookieHandler;
 import java.net.CookieManager;
 
 public class GlobalCtx {
-    static RequestQueue queue;
-    static String urlPrefix;
-    static JSONObject flightResult = null;
+    public static RequestQueue queue;
+    public static String urlPrefix;
+    public static JSONObject flightResult = null;
     public static void init(Context ctx, String url) {
         CookieManager manager = new CookieManager();
         CookieHandler.setDefault(manager);

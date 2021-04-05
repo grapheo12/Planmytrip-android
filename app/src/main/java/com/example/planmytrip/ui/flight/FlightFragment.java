@@ -1,4 +1,4 @@
-package com.example.planmytrip;
+package com.example.planmytrip.ui.flight;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,11 +13,14 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.planmytrip.GlobalCtx;
+import com.example.planmytrip.MainActivity;
+import com.example.planmytrip.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class activity_flight extends AppCompatActivity {
+public class FlightFragment extends AppCompatActivity {
 
     Button searchBtn;
     EditText From, To, Doj, Tclass, Nop;
@@ -26,7 +29,7 @@ public class activity_flight extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_flight);
+        setContentView(R.layout.fragment_flight);
 
         From = (EditText)findViewById(R.id.from);
         To = (EditText)findViewById(R.id.to);
@@ -58,9 +61,9 @@ public class activity_flight extends AppCompatActivity {
                         "Search Successful",
                         Toast.LENGTH_SHORT).show();
 
-                Intent mainPage = new Intent(activity_flight.this, MainActivity.class);
-                activity_flight.this.startActivity(mainPage);
-                activity_flight.this.finish();
+                Intent mainPage = new Intent(FlightFragment.this, MainActivity.class);
+                FlightFragment.this.startActivity(mainPage);
+                FlightFragment.this.finish();
                 GlobalCtx.flightResult = response;
             }
         }, new Response.ErrorListener() {

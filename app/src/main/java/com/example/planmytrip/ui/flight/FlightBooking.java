@@ -1,8 +1,10 @@
-package com.example.planmytrip;
+package com.example.planmytrip.ui.flight;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.planmytrip.R;
 
 public class FlightBooking extends AppCompatActivity {
 
