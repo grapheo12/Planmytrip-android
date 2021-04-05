@@ -23,13 +23,7 @@ public class HotelFragment extends Fragment {
         hotelViewModel =
                 new ViewModelProvider(this).get(HotelViewModel.class);
         View root = inflater.inflate(R.layout.fragment_hotel, container, false);
-//        final TextView textView = root.findViewById(R.id.text_gallery);
-        hotelViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-            }
-        });
+        System.out.println(root.toString());
 
         return root;
     }
