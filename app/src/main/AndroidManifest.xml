@@ -11,7 +11,8 @@
         android:networkSecurityConfig="@xml/netwrok_security_config"
         android:supportsRtl="true"
         android:theme="@style/Theme.Planmytrip">
-        <activity android:name=".ui.flight.FlightBooking"></activity>
+        <activity android:name=".ui.flight.ItemFlight"></activity>
+        <activity android:name=".ui.flight.FlightBooking" />
         <activity android:name=".ui.flight.FlightFragment" />
         <activity android:name=".Registration" />
         <activity

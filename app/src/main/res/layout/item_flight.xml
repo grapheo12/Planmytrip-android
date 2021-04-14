@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tvFlightId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="flight_id" />
+    <TextView
+        android:id="@+id/tvAirlines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="airlines" />
+    <TextView
+        android:id="@+id/tvDeparture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="departure" />
+    <TextView
+        android:id="@+id/tvFare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="fare" />
+    <TextView
+        android:id="@+id/tvSeatType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="seat_type" />
+    <TextView
+        android:id="@+id/tvSeats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="seats" />
+</LinearLayout>
