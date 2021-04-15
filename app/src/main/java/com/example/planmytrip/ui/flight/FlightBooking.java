@@ -29,5 +29,6 @@ public class FlightBooking extends AppCompatActivity {
         FlightResultAdapter adapter = new FlightResultAdapter(this, flightResults);
         ListView listView = (ListView)findViewById(R.id.tvItems);
         listView.setAdapter(adapter);
+
     }
 }

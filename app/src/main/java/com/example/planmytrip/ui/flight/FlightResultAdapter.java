@@ -1,17 +1,33 @@
 package com.example.planmytrip.ui.flight;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.planmytrip.GlobalCtx;
+import com.example.planmytrip.MainActivity;
 import com.example.planmytrip.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
+    Button bookBtn;
+    EditText tvNop;
+    private final String flightSearchRoute = "auth/flight/booking";
     public FlightResultAdapter(Context context, ArrayList<FlightResult> results){
         super(context, 0, results);
     }
@@ -32,6 +48,7 @@ public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
         TextView tvFare      = (TextView) convertView.findViewById(R.id.tvFare);
         TextView tvSeatType  = (TextView) convertView.findViewById(R.id.tvSeatType);
         TextView tvSeats     = (TextView) convertView.findViewById(R.id.tvSeats);
+        EditText tvNop       = (EditText) convertView.findViewById(R.id.tvNop);
 
         // Populate the data into the template view using the data object
         tvFlightId.setText(String.valueOf(result.flight_id));
@@ -41,6 +58,60 @@ public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
         tvSeatType.setText(result.seat_type);
         tvSeats.setText(String.valueOf(result.seats));
 
+        bookBtn = (Button)convertView.findViewById(R.id.book1);
+
+        bookBtn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                //OnCLick Stuff
+                String flight_id = tvFlightId.getText().toString();
+                String airlines = tvAirlines.getText().toString();
+                String departure = tvDeparture.getText().toString();
+                String seat_type = tvSeatType.getText().toString();
+                double fare = Double.parseDouble(tvFare.getText().toString());
+                int seats = Integer.parseInt(tvSeats.getText().toString());
+                int nop = Integer.parseInt(tvNop.getText().toString());
+
+                JSONObject req = new JSONObject();
+                try {
+                    req.put("flight_id", flight_id);
+                    req.put("airlines", airlines);
+                    req.put("departure", departure);
+                    req.put("seat_type", seat_type);
+                    req.put("fare", fare);
+                    req.put("seats", seats);
+                }catch(JSONException e)
+                {
+                    e.printStackTrace();
+                }
+
+                System.out.println("Booking called");
+
+
+
+                String flightSearchUrl = GlobalCtx.urlPrefix + flightSearchRoute;
+                JsonObjectRequest flightSearchRequest = new JsonObjectRequest(Request.Method.POST, flightSearchUrl,
+                        req, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        System.out.println("SriLanka");
+                        Toast.makeText(getContext().getApplicationContext(),
+                                "Booking Successful!",
+                                Toast.LENGTH_SHORT).show();
+
+                        //Intent mainPage = new Intent(ItemFlight.this, MainActivity.class);
+                        //ItemFlight.this.startActivity(mainPage);
+                        //ItemFlight.this.finish();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext().getApplicationContext(),
+                                "Something went wrong :-(",
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });
         // Return the completed view to render on screen
 
         return convertView;

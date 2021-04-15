@@ -33,7 +33,8 @@ public class ItemFlight extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.item_flight);
+        System.out.println("Jingalala");
+        setContentView(R.layout.item_flight);
 
         FlightId  = (TextView)findViewById(R.id.tvFlightId);
         Airlines  = (TextView)findViewById(R.id.tvAirlines);
