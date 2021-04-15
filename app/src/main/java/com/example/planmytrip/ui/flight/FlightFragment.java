@@ -94,11 +94,15 @@ public class FlightFragment extends Fragment {
                         Bundle args = new Bundle();
                         try {
                             JSONArray flights = response.getJSONArray("flights");
+                            System.out.println("Pakistan");
+                            System.out.println(flights.toString());
                             ArrayList<FlightResult> flightResults = FlightResult.fromJson(flights);
-                            args.putSerializable("response",(Serializable)flightResults);
-                            resultPage.putExtra("myKey",args);
+                            System.out.println("China");
+                            //args.putSerializable("response",(Serializable)flightResults);
+                            //resultPage.putExtra("myKey",args);
                             FlightFragment.this.startActivity(resultPage);
                             GlobalCtx.flightResult = response;
+                            GlobalCtx.flightResults = flightResults;
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getContext().getApplicationContext(), "No flights found", Toast.LENGTH_SHORT).show();

@@ -23,10 +23,7 @@ public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
         FlightResult result = getItem(position);
 
         // Check if an existing view is being reused, otherwise inflate the view
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_flight, parent, false);
-
-        }
+        convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_flight, parent, false);
 
         // Lookup view for data population
         TextView tvFlightId  = (TextView) convertView.findViewById(R.id.tvFlightId);
@@ -37,12 +34,12 @@ public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
         TextView tvSeats     = (TextView) convertView.findViewById(R.id.tvSeats);
 
         // Populate the data into the template view using the data object
-        tvFlightId.setText(result.flight_id);
+        tvFlightId.setText(String.valueOf(result.flight_id));
         tvAirlines.setText(result.airlines);
         tvDeparture.setText(result.departure);
         tvFare.setText(Double.toString(result.fare));
         tvSeatType.setText(result.seat_type);
-        tvSeats.setText(result.seats);
+        tvSeats.setText(String.valueOf(result.seats));
 
         // Return the completed view to render on screen
 
