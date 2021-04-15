@@ -95,7 +95,6 @@ public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
                         req, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        System.out.println("SriLanka");
                         Toast.makeText(getContext().getApplicationContext(),
                                 "Booking Successful!",
                                 Toast.LENGTH_SHORT).show();
