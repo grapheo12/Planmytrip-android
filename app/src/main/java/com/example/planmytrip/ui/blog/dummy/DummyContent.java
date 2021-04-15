@@ -1,5 +1,7 @@
 package com.example.planmytrip.ui.blog.dummy;
 
+import com.example.planmytrip.GlobalCtx;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +32,8 @@ public class DummyContent {
         for (int i = 1; i <= COUNT; i++) {
             addItem(createDummyItem(i+1));
         }
+
+
     }
 
     private static void addItem(DummyItem item) {

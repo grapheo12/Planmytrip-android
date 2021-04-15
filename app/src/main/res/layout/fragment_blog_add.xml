@@ -71,8 +71,8 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="24dp"
         android:background="#33B71C1C"
-        android:hint="Date"
-        android:inputType="date"
+        android:hint="Short Description"
+        android:inputType="text"
         android:selectAllOnFocus="true"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
@@ -81,7 +81,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/title" />
 
-    <TextView
+    <EditText
         android:id="@+id/textView17"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -104,7 +104,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="64dp"
         android:enabled="false"
@@ -113,7 +112,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dates"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
         app:layout_constraintVertical_bias="1.0" />
 
     <ProgressBar

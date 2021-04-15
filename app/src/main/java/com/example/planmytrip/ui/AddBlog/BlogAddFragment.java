@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,7 +22,20 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
+import com.example.planmytrip.GlobalCtx;
+import com.example.planmytrip.Landing;
+import com.example.planmytrip.MainActivity;
 import com.example.planmytrip.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 public class BlogAddFragment extends Fragment {
 
@@ -112,9 +126,49 @@ public class BlogAddFragment extends Fragment {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadingProgressBar.setVisibility(View.VISIBLE);
-                loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+                EditText _username = (EditText)getView().findViewById(R.id.username);
+                EditText _title = (EditText)getView().findViewById(R.id.title);
+                EditText _dates = (EditText)getView().findViewById(R.id.dates);
+                EditText _content = (EditText)getView().findViewById(R.id.textView17);
+
+                String username = _username.getText().toString();
+                String title = _title.getText().toString();
+                String dates = _dates.getText().toString();
+                String content = _content.getText().toString();
+
+                JSONObject req = new JSONObject();
+                try {
+                    req.put("title", title);
+                    req.put("short_description", dates);
+                    req.put("url", "google.com");
+                    req.put("content", content);
+
+                    String addBlogUrl = GlobalCtx.urlPrefix + "blog/blogPost";
+                    JsonRequest request = new JsonObjectRequest(Request.Method.POST, addBlogUrl,
+                            req, new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    Toast.makeText(getActivity().getApplicationContext(),
+                                            "Blog posted",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(getActivity().getApplicationContext(),
+                                            "Try Again Later!",
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+                    GlobalCtx.queue.add(request);
+                }catch (JSONException e){
+                    System.out.println("AAAAHHHHH!!! Stress " + e.toString());
+                }
+
+
+
+
             }
         });
     }

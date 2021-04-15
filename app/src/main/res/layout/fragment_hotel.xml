@@ -7,116 +7,136 @@
     android:background="@drawable/bg_1"
     tools:context=".ui.hotel.GalleryFragment">
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="244dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Hotel Roxandrea"
-        android:textColor="@color/white"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.241"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteY="510dp">
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/alfa_slab_one"
-        android:text="More than an Hotel ... An Experience"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.226"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="401dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:background="#B3827717"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10">
-
-        <androidx.gridlayout.widget.GridLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_weight="1"
-            app:columnCount="3"
-            app:rowCount="1"
-            app:useDefaultMargins="false">
-
-            <EditText
-                android:id="@+id/editTextDate2"
-                android:layout_width="100dp"
-                android:layout_height="55dp"
-                android:layout_margin="15dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:ems="10"
-                android:fontFamily="@font/montaga"
-                android:gravity="center|center_horizontal"
-                android:inputType="date"
-                android:text="Check-in"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_column="0"
-                app:layout_row="0" />
-
-            <EditText
-                android:id="@+id/editTextDate3"
-                android:layout_width="100dp"
-                android:layout_height="55dp"
-                android:layout_margin="15dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:ems="10"
-                android:fontFamily="@font/montaga"
-                android:gravity="center|center_horizontal|center_vertical"
-                android:inputType="date"
-                android:text="Check-out"
-                android:textSize="12sp"
-                app:layout_column="1"
-                app:layout_row="0" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView13"
-                android:layout_width="100dp"
-                android:layout_height="55dp"
-                android:layout_margin="15dp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:fontFamily="@font/montaga"
-                android:gravity="center|center_horizontal|center_vertical"
-                android:text="City"
-                android:textColor="#000000"
-                app:layout_column="2"
-                app:layout_row="0" />
-        </androidx.gridlayout.widget.GridLayout>
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="244dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Hotel Roxandrea"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.241"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/alfa_slab_one"
+                android:text="More than an Hotel ... An Experience"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.226"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Check Availibility"
-        app:backgroundTint="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.123" />
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="401dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="#B3827717"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.197"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView10">
+
+                <androidx.gridlayout.widget.GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    app:columnCount="3"
+                    app:rowCount="1"
+                    app:useDefaultMargins="false">
+
+                    <EditText
+                        android:id="@+id/editTextDate2"
+                        android:layout_width="100dp"
+                        android:layout_height="55dp"
+                        android:layout_margin="15dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:ems="10"
+                        android:fontFamily="@font/montaga"
+                        android:gravity="center|center_horizontal"
+                        android:inputType="date"
+                        android:text="Check-in"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        app:layout_column="0"
+                        app:layout_row="0" />
+
+                    <EditText
+                        android:id="@+id/editTextDate3"
+                        android:layout_width="100dp"
+                        android:layout_height="55dp"
+                        android:layout_margin="15dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:ems="10"
+                        android:fontFamily="@font/montaga"
+                        android:gravity="center|center_horizontal|center_vertical"
+                        android:inputType="date"
+                        android:text="Check-out"
+                        android:textSize="12sp"
+                        app:layout_column="1"
+                        app:layout_row="0" />
+
+                    <EditText
+                        android:id="@+id/textView13"
+                        android:layout_width="100dp"
+                        android:layout_height="55dp"
+                        android:layout_margin="15dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:fontFamily="@font/montaga"
+                        android:gravity="center|center_horizontal|center_vertical"
+                        android:text="City"
+                        android:textColor="#000000"
+                        app:layout_column="2"
+                        app:layout_row="0" />
+                </androidx.gridlayout.widget.GridLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnChkHotel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Check Availibility"
+                app:backgroundTint="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                app:layout_constraintVertical_bias="0.123" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/hotel_search_results"
+                />
+
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
