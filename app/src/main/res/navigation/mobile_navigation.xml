@@ -18,10 +18,10 @@
         tools:layout="@layout/fragment_hotel" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.planmytrip.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/flight"
+        android:name="com.example.planmytrip.ui.flight.FlightFragment"
+        android:label="Flight"
+        tools:layout="@layout/fragment_flight" />
 
     <fragment
         android:id="@+id/itemFragment"

@@ -15,6 +15,11 @@
             android:title="Hotel" />
 
         <item
+            android:id="@+id/flight"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Flight" />
+
+        <item
             android:id="@+id/itemFragment"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Blog" />
