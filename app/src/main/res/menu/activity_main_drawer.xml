@@ -25,6 +25,11 @@
             android:title="Blog" />
 
         <item
+            android:id="@+id/addBlog"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Add New Blog" />
+
+        <item
             android:id="@+id/map"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Location" />

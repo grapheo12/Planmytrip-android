@@ -30,6 +30,12 @@
         tools:layout="@layout/fragment_blog" />
 
     <fragment
+        android:id="@+id/addBlog"
+        android:name="com.example.planmytrip.ui.AddBlog.BlogAddFragment"
+        android:label="Add New Blog"
+        tools:layout="@layout/fragment_blog_add" />
+
+    <fragment
         android:id="@+id/map"
         android:name="com.example.planmytrip.MapsFragment"
         android:label="Location"
