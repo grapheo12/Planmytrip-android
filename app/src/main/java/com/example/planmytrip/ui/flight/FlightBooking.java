@@ -21,16 +21,12 @@ public class FlightBooking extends AppCompatActivity {
         setContentView(R.layout.activity_flight_booking);
 
         Bundle args = getIntent().getBundleExtra("myKey");
-        JSONObject result = (JSONObject)args.getSerializable("response");
+        ArrayList<FlightResult> flightResults = (ArrayList<FlightResult>) args.getSerializable("response");
 
-        try {
-            JSONArray resultArray = result.getJSONArray("flights");
-            ArrayList<FlightResult> flightResults = FlightResult.fromJson(resultArray);
-            FlightResultAdapter adapter = new FlightResultAdapter(this, flightResults);
-            ListView listView = (ListView)findViewById(R.id.tvItems);
-            listView.setAdapter(adapter);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        //JSONArray resultArray = result.getJSONArray("flights");
+        //ArrayList<FlightResult> flightResults = FlightResult.fromJson(resultArray);
+        FlightResultAdapter adapter = new FlightResultAdapter(this, flightResults);
+        ListView listView = (ListView)findViewById(R.id.tvItems);
+        listView.setAdapter(adapter);
     }
 }
