@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.example.planmytrip.GlobalCtx;
 import com.example.planmytrip.R;
 
 import org.json.JSONArray;
@@ -20,17 +21,14 @@ public class FlightBooking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flight_booking);
 
-        Bundle args = getIntent().getBundleExtra("myKey");
-        JSONObject result = (JSONObject)args.getSerializable("response");
+        //Bundle args = getIntent().getBundleExtra("myKey");
+        ArrayList<FlightResult> flightResults = GlobalCtx.flightResults;
 
-        try {
-            JSONArray resultArray = result.getJSONArray("flights");
-            ArrayList<FlightResult> flightResults = FlightResult.fromJson(resultArray);
-            FlightResultAdapter adapter = new FlightResultAdapter(this, flightResults);
-            ListView listView = (ListView)findViewById(R.id.tvItems);
-            listView.setAdapter(adapter);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        //JSONArray resultArray = result.getJSONArray("flights");
+        //ArrayList<FlightResult> flightResults = FlightResult.fromJson(resultArray);
+        FlightResultAdapter adapter = new FlightResultAdapter(this, flightResults);
+        ListView listView = (ListView)findViewById(R.id.tvItems);
+        listView.setAdapter(adapter);
+
     }
 }

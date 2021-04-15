@@ -25,16 +25,18 @@ import com.example.planmytrip.MainActivity;
 import com.example.planmytrip.R;
 import com.example.planmytrip.ui.hotel.HotelViewModel;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class FlightFragment extends Fragment {
 
     Button searchBtn;
     EditText From, To, Doj, Tclass, Nop;
-    private final String flightSearchRoute = "auth/flight";
+    private final String flightSearchRoute = "flight/";
 
     @Nullable
     @Override
@@ -73,32 +75,41 @@ public class FlightFragment extends Fragment {
                     req.put("to", to);
                     req.put("date_of_journey", doj);
                     req.put("ticket_class", tclass);
-                    req.put("nop", nop);
+                    req.put("passengers", Integer.toString(nop));
                 }catch(JSONException e)
                 {
                     e.printStackTrace();
                 }
 
                 String flightSearchUrl = GlobalCtx.urlPrefix + flightSearchRoute;
-                JsonObjectRequest flightSearchRequest = new JsonObjectRequest(Request.Method.GET, flightSearchUrl,
-                        req, new Response.Listener<JSONObject>() {
+                JsonObjectRequest flightSearchRequest = new JsonObjectRequest(Request.Method.GET,
+                        flightSearchUrl+"?from="+from+"&to="+to+"&date_of_journey="+doj+"&ticket_class="+tclass+"&passengers="+nop,
+                        null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        //Toast.makeText(this, "Search Successful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext().getApplicationContext(), "Search Successful", Toast.LENGTH_SHORT).show();
 
                         Activity context = getActivity();
                         Intent resultPage = new Intent(context, FlightBooking.class);
                         Bundle args = new Bundle();
-                        args.putSerializable("response",(Serializable)response);
-                        resultPage.putExtra("myKey",args);
-                        FlightFragment.this.startActivity(resultPage);
-                        //FlightFragment.this.finish();
-                        GlobalCtx.flightResult = response;
+                        try {
+                            JSONArray flights = response.getJSONArray("flights");
+                            System.out.println(flights.toString());
+                            ArrayList<FlightResult> flightResults = FlightResult.fromJson(flights);
+                            //args.putSerializable("response",(Serializable)flightResults);
+                            //resultPage.putExtra("myKey",args);
+                            FlightFragment.this.startActivity(resultPage);
+                            GlobalCtx.flightResult = response;
+                            GlobalCtx.flightResults = flightResults;
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getContext().getApplicationContext(), "No flights found", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        //Toast.makeText(getApplicationContext(),"Something went wrong :-(",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext().getApplicationContext(), "No flights found", Toast.LENGTH_SHORT).show();
                     }
                 });
 
