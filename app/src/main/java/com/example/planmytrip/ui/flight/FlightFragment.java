@@ -20,6 +20,8 @@ import com.example.planmytrip.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 public class FlightFragment extends AppCompatActivity {
 
     Button searchBtn;
@@ -61,8 +63,11 @@ public class FlightFragment extends AppCompatActivity {
                         "Search Successful",
                         Toast.LENGTH_SHORT).show();
 
-                Intent mainPage = new Intent(FlightFragment.this, MainActivity.class);
-                FlightFragment.this.startActivity(mainPage);
+                Intent resultPage = new Intent(FlightFragment.this, FlightBooking.class);
+                Bundle args = new Bundle();
+                args.putSerializable("response",(Serializable)response);
+                resultPage.putExtra("myKey",args);
+                FlightFragment.this.startActivity(resultPage);
                 FlightFragment.this.finish();
                 GlobalCtx.flightResult = response;
             }
