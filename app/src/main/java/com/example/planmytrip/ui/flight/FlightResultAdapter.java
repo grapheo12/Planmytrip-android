@@ -85,7 +85,9 @@ public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
                 }
 
                 System.out.println("Booking called");
-
+                Toast.makeText(getContext().getApplicationContext(),
+                        "Booking Successful!",
+                        Toast.LENGTH_SHORT).show();
 
 
                 String flightSearchUrl = GlobalCtx.urlPrefix + flightSearchRoute;
