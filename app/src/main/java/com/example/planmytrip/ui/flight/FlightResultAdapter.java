@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
     Button bookBtn;
-    private final String flightSearchRoute = "auth/flight/booking";
+    private final String flightSearchRoute = "flight/booking";
     public FlightResultAdapter(Context context, ArrayList<FlightResult> results){
         super(context, 0, results);
     }
@@ -63,6 +63,7 @@ public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
         bookBtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
                 //OnCLick Stuff
+
                 String flight_id = tvFlightId.getText().toString();
                 String airlines = tvAirlines.getText().toString();
                 String departure = tvDeparture.getText().toString();
@@ -90,8 +91,8 @@ public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
 //                        Toast.LENGTH_SHORT).show();
 
 
-                String flightSearchUrl = GlobalCtx.urlPrefix + flightSearchRoute;
-                JsonObjectRequest flightSearchRequest = new JsonObjectRequest(Request.Method.POST, flightSearchUrl,
+                String route = GlobalCtx.urlPrefix + flightSearchRoute;
+                JsonObjectRequest flightBookRequest = new JsonObjectRequest(Request.Method.POST, route,
                         req, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -119,6 +120,7 @@ public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
                         context.startActivity(intent);
                     }
                 });
+                GlobalCtx.queue.add(flightBookRequest);
             }
         });
         // Return the completed view to render on screen
