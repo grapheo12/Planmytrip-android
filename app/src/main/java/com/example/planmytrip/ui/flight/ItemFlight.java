@@ -26,8 +26,7 @@ import java.io.Serializable;
 public class ItemFlight extends AppCompatActivity {
 
     Button bookBtn;
-    TextView FlightId, Airlines, Departure, SeatType, Seats, Fare;
-    EditText Nop;
+    TextView FlightId, Airlines, Departure, SeatType, Seats, Fare, Nop;
     private final String flightSearchRoute = "auth/flight/booking";
 
     @Override
@@ -42,7 +41,7 @@ public class ItemFlight extends AppCompatActivity {
         SeatType  = (TextView)findViewById(R.id.tvSeatType);
         Fare      = (TextView)findViewById(R.id.tvFare);
         Seats     = (TextView)findViewById(R.id.tvSeats);
-        Nop       = (EditText)findViewById(R.id.tvNop);
+        Nop       = (TextView) findViewById(R.id.tvNop);
 
         bookBtn = (Button)findViewById(R.id.book1);
 

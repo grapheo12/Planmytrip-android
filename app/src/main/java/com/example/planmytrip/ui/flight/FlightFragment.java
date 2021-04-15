@@ -68,6 +68,7 @@ public class FlightFragment extends Fragment {
                 String doj = Doj.getText().toString();
                 String tclass = Tclass.getText().toString();
                 int nop = Integer.parseInt(Nop.getText().toString());
+                GlobalCtx.passengers = nop;
 
                 JSONObject req = new JSONObject();
                 try {

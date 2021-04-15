@@ -26,7 +26,6 @@ import java.util.ArrayList;
 
 public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
     Button bookBtn;
-    EditText tvNop;
     private final String flightSearchRoute = "auth/flight/booking";
     public FlightResultAdapter(Context context, ArrayList<FlightResult> results){
         super(context, 0, results);
@@ -48,7 +47,7 @@ public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
         TextView tvFare      = (TextView) convertView.findViewById(R.id.tvFare);
         TextView tvSeatType  = (TextView) convertView.findViewById(R.id.tvSeatType);
         TextView tvSeats     = (TextView) convertView.findViewById(R.id.tvSeats);
-        EditText tvNop       = (EditText) convertView.findViewById(R.id.tvNop);
+        TextView tvNop       = (TextView) convertView.findViewById(R.id.tvNop);
 
         // Populate the data into the template view using the data object
         tvFlightId.setText(String.valueOf(result.flight_id));
@@ -57,6 +56,7 @@ public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
         tvFare.setText(Double.toString(result.fare));
         tvSeatType.setText(result.seat_type);
         tvSeats.setText(String.valueOf(result.seats));
+        tvNop.setText(String.valueOf(GlobalCtx.passengers));
 
         bookBtn = (Button)convertView.findViewById(R.id.book1);
 
@@ -67,9 +67,9 @@ public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
                 String airlines = tvAirlines.getText().toString();
                 String departure = tvDeparture.getText().toString();
                 String seat_type = tvSeatType.getText().toString();
-                double fare = Double.parseDouble(tvFare.getText().toString());
-                int seats = Integer.parseInt(tvSeats.getText().toString());
                 int nop = Integer.parseInt(tvNop.getText().toString());
+                double fare = Double.parseDouble(tvFare.getText().toString())/nop;
+                int seats = Integer.parseInt(tvSeats.getText().toString());
 
                 JSONObject req = new JSONObject();
                 try {
@@ -78,16 +78,16 @@ public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
                     req.put("departure", departure);
                     req.put("seat_type", seat_type);
                     req.put("fare", fare);
-                    req.put("seats", seats);
+                    req.put("seats", nop);
                 }catch(JSONException e)
                 {
                     e.printStackTrace();
                 }
 
                 System.out.println("Booking called");
-                Toast.makeText(getContext().getApplicationContext(),
-                        "Booking Successful!",
-                        Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext().getApplicationContext(),
+//                        "Booking Successful!",
+//                        Toast.LENGTH_SHORT).show();
 
 
                 String flightSearchUrl = GlobalCtx.urlPrefix + flightSearchRoute;
@@ -99,6 +99,10 @@ public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
                                 "Booking Successful!",
                                 Toast.LENGTH_SHORT).show();
 
+                        Context context = getContext().getApplicationContext();
+                        Intent intent= new Intent(context, MainActivity.class);
+                        context.startActivity(intent);
+
                         //Intent mainPage = new Intent(ItemFlight.this, MainActivity.class);
                         //ItemFlight.this.startActivity(mainPage);
                         //ItemFlight.this.finish();
@@ -109,6 +113,10 @@ public class FlightResultAdapter extends ArrayAdapter<FlightResult> {
                         Toast.makeText(getContext().getApplicationContext(),
                                 "Something went wrong :-(",
                                 Toast.LENGTH_LONG).show();
+
+                        Context context = getContext().getApplicationContext();
+                        Intent intent= new Intent(context, MainActivity.class);
+                        context.startActivity(intent);
                     }
                 });
             }

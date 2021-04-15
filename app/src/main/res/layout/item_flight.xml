@@ -9,19 +9,18 @@
     android:paddingLeft="150dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="258dp"
+        android:layout_height="304dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/tvFlightId"
-            android:layout_width="77dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="flight_id"
@@ -29,7 +28,7 @@
 
         <TextView
             android:id="@+id/tvAirlines"
-            android:layout_width="71dp"
+            android:layout_width="match_parent"
             android:layout_height="25dp"
             android:layout_marginTop="10dp"
             android:text="airlines"
@@ -39,7 +38,7 @@
 
         <TextView
             android:id="@+id/tvDeparture"
-            android:layout_width="71dp"
+            android:layout_width="match_parent"
             android:layout_height="37dp"
             android:layout_marginTop="10dp"
             android:text="departure"
@@ -52,22 +51,8 @@
             tools:layout_conversion_absoluteWidth="61dp" />
 
         <TextView
-            android:id="@+id/tvFare"
-            android:layout_width="54dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="10dp"
-            android:text="fare"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/tvDeparture"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:layout_conversion_absoluteHeight="19dp"
-            tools:layout_conversion_absoluteWidth="43dp" />
-
-        <TextView
             android:id="@+id/tvSeatType"
-            android:layout_width="71dp"
+            android:layout_width="match_parent"
             android:layout_height="25dp"
             android:layout_marginTop="10dp"
             android:text="seat_type"
@@ -81,40 +66,48 @@
 
         <TextView
             android:id="@+id/tvSeats"
-            android:layout_width="77dp"
+            android:layout_width="match_parent"
             android:layout_height="24dp"
             android:layout_marginTop="10dp"
-            android:text="seats"
+            android:text="Available Seats"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvFlightId"
             tools:layout_conversion_absoluteHeight="19dp"
             tools:layout_conversion_absoluteWidth="46dp" />
 
-                <EditText
-                    android:id="@+id/tvNop"
-                    android:layout_width="71dp"
-                    android:layout_height="27dp"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:hint="Passengers"
-                    android:inputType="number"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvSeatType"
-                    app:layout_constraintEnd_toStartOf="@+id/book1"
-                    app:layout_constraintHorizontal_bias="0.733"
-                    app:layout_constraintStart_toEndOf="@+id/tvSeatType"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDeparture"
-                    app:layout_constraintVertical_bias="0.0" />
+        <TextView
+            android:id="@+id/tvNop"
+            android:layout_width="match_parent"
+            android:layout_height="27dp"
+            android:layout_marginTop="10dp"
+            android:text="Seats to Book"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFlightId"
+            tools:layout_conversion_absoluteHeight="19dp"
+            tools:layout_conversion_absoluteWidth="46dp" />
+
+        <TextView
+            android:id="@+id/tvFare"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"
+            android:text="fare"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDeparture"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_conversion_absoluteHeight="19dp"
+            tools:layout_conversion_absoluteWidth="43dp" />
 
         <Button
             android:id="@+id/book1"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
-            android:text="Book"
+            android:text="Confirm Booking"
             app:layout_constraintBottom_toBottomOf="@+id/tvNop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvFare"

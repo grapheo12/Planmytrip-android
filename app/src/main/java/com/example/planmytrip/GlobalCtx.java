@@ -17,6 +17,7 @@ public class GlobalCtx {
     public static String urlPrefix;
     public static JSONObject flightResult = null;
     public static ArrayList<FlightResult> flightResults = null;
+    public static int passengers = 0;
     public static void init(Context ctx, String url) {
         CookieManager manager = new CookieManager();
         CookieHandler.setDefault(manager);
