@@ -94,10 +94,8 @@ public class FlightFragment extends Fragment {
                         Bundle args = new Bundle();
                         try {
                             JSONArray flights = response.getJSONArray("flights");
-                            System.out.println("Pakistan");
                             System.out.println(flights.toString());
                             ArrayList<FlightResult> flightResults = FlightResult.fromJson(flights);
-                            System.out.println("China");
                             //args.putSerializable("response",(Serializable)flightResults);
                             //resultPage.putExtra("myKey",args);
                             FlightFragment.this.startActivity(resultPage);

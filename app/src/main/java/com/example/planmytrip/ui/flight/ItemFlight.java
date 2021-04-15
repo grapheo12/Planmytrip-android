@@ -33,7 +33,7 @@ public class ItemFlight extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.item_flight);
+        //setContentView(R.layout.item_flight);
 
         FlightId  = (TextView)findViewById(R.id.tvFlightId);
         Airlines  = (TextView)findViewById(R.id.tvAirlines);
@@ -43,44 +43,55 @@ public class ItemFlight extends AppCompatActivity {
         Seats     = (TextView)findViewById(R.id.tvSeats);
         Nop       = (EditText)findViewById(R.id.tvNop);
 
-    }
+        bookBtn = (Button)findViewById(R.id.book1);
 
-    public void book(View view) throws JSONException {
-        String flight_id = FlightId.getText().toString();
-        String airlines = Airlines.getText().toString();
-        String departure = Departure.getText().toString();
-        String seat_type = SeatType.getText().toString();
-        double fare = Double.parseDouble(Fare.getText().toString());
-        int seats = Integer.parseInt(Seats.getText().toString());
-        int nop = Integer.parseInt(Nop.getText().toString());
+        bookBtn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                //OnCLick Stuff
+                String flight_id = FlightId.getText().toString();
+                String airlines = Airlines.getText().toString();
+                String departure = Departure.getText().toString();
+                String seat_type = SeatType.getText().toString();
+                double fare = Double.parseDouble(Fare.getText().toString());
+                int seats = Integer.parseInt(Seats.getText().toString());
+                int nop = Integer.parseInt(Nop.getText().toString());
 
-        JSONObject req = new JSONObject();
-        req.put("flight_id", flight_id);
-        req.put("airlines", airlines);
-        req.put("departure", departure);
-        req.put("seat_type", seat_type);
-        req.put("fare", fare);
-        req.put("seats",seats);
+                JSONObject req = new JSONObject();
+                try {
+                    req.put("flight_id", flight_id);
+                    req.put("airlines", airlines);
+                    req.put("departure", departure);
+                    req.put("seat_type", seat_type);
+                    req.put("fare", fare);
+                    req.put("seats", seats);
+                }catch(JSONException e)
+                {
+                    e.printStackTrace();
+                }
 
-        String flightSearchUrl = GlobalCtx.urlPrefix + flightSearchRoute;
-        JsonObjectRequest flightSearchRequest = new JsonObjectRequest(Request.Method.POST, flightSearchUrl,
-                req, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Toast.makeText(getApplicationContext(),
-                        "Booking Successful!",
-                        Toast.LENGTH_SHORT).show();
+                System.out.println("Booking called");
 
-                Intent mainPage = new Intent(ItemFlight.this, MainActivity.class);
-                ItemFlight.this.startActivity(mainPage);
-                ItemFlight.this.finish();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),
-                        "Something went wrong :-(",
-                        Toast.LENGTH_LONG).show();
+                String flightSearchUrl = GlobalCtx.urlPrefix + flightSearchRoute;
+                JsonObjectRequest flightSearchRequest = new JsonObjectRequest(Request.Method.POST, flightSearchUrl,
+                        req, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Toast.makeText(getApplicationContext(),
+                                "Booking Successful!",
+                                Toast.LENGTH_SHORT).show();
+
+                        Intent mainPage = new Intent(ItemFlight.this, MainActivity.class);
+                        ItemFlight.this.startActivity(mainPage);
+                        ItemFlight.this.finish();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(),
+                                "Something went wrong :-(",
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
 

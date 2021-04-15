@@ -27,9 +27,7 @@ public class FlightBooking extends AppCompatActivity {
         //JSONArray resultArray = result.getJSONArray("flights");
         //ArrayList<FlightResult> flightResults = FlightResult.fromJson(resultArray);
         FlightResultAdapter adapter = new FlightResultAdapter(this, flightResults);
-        System.out.println("Bangladesh");
         ListView listView = (ListView)findViewById(R.id.tvItems);
-        System.out.println("Portugal");
         listView.setAdapter(adapter);
     }
 }
