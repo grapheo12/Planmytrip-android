@@ -18,5 +18,10 @@
             android:id="@+id/itemFragment"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Blog" />
+
+        <item
+            android:id="@+id/map"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Location" />
     </group>
 </menu>
